@@ -1,0 +1,52 @@
+.classifys {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    padding: 0.2rem 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.classifys li {
+    margin-bottom: 0.1rem;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 20px;
+    margin-right: 0.5rem;
+}
+
+.classifys .active {
+    color: rgb(29, 165, 122);
+    font-weight: bold;
+}
+
+.box {
+    margin: 0.2rem 0;
+    display: flex;
+    padding: 0.2rem;
+    border-bottom: 1px solid #ccc;
+}
+
+.box img {
+    width: 2.5rem;
+    height: 3.8rem;
+}
+
+.title {
+    color: #333;
+    font-size: 16px;
+}
+.author {
+    margin: 0.4rem 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.meta {
+    height: 2.1rem;
+    line-height: 0.7rem;
+    overflow: hidden;
+}
+.content {
+    padding-left: 0.2rem;
+    flex: 1;
+}

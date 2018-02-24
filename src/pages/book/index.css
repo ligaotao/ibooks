@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+}
+.book-box {
+    position: relative;
+    background: url('/img/read-bg.jpg') no-repeat 100% 100%;
+    height: 100vh;
+}
+.txt {
+    height: 100vh;
+    overflow: auto;
+    padding: 10px;
+    line-height: 1.4;
+    width: 100%;
+    color:#333;
+    white-space: normal;
+}
+.txt pre {
+    white-space: pre-wrap;
+}
+.chapters {
+    font-size: 14px;
+    position: fixed;
+    width: 8rem;
+    background: #ccc;
+    top: 50%;
+    left: -100%;
+    margin-top: -25vh;
+    padding: 60px 0 30px;
+    transition: all .5s;
+}
+.chapters.active {
+    left: 0;
+}
+.chapters ul {
+    overflow-y: auto;
+    margin: 0;
+    padding: 0.1rem 0 0.1rem 0.4rem;
+    height: 50vh;
+}
+.chapters li {
+    height: 48px;
+    line-height: 48px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.catalog {
+    height: 48px;
+    line-height: 48px;
+    font-size: 16px;
+    font-weight: bold;
+    padding-left: 0.4rem;
+    width: 100%;
+    border-bottom: 1px solid #a3a3a3;
+    position: absolute;
+    top: 0;
+}
+
+.actions {
+    width: 100%;
+    line-height: 1rem;
+    color: #fff;
+    display: flex;
+    height: 1rem;
+    background:rgba(0, 0, 0, 0.6);
+    position: fixed;
+    bottom: -1rem;
+    transition: all .5s;
+}
+.actions.active {
+    bottom: 0;
+}
+
+.actions div {
+    flex: 1;
+    text-align: center;
+}

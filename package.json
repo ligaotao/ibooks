@@ -1,0 +1,45 @@
+{
+  "name": "ibooks",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "antd-mobile": "^2.1.6",
+    "axios": "^0.17.1",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.0",
+    "redux": "^3.7.2",
+    "redux-thunk": "^2.2.0",
+    "zent": "^4.3.0"
+  },
+  "scripts": {
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "proxy": {
+    "/book/*": {
+      "target": "http://api.zhuishushenqi.com/"
+    },
+    "/cats/*": {
+      "target": "http://api.zhuishushenqi.com/"
+    },
+    "/atoc/*": {
+      "target": "http://api.zhuishushenqi.com/"
+    },
+    "/chapter/*": {
+      "changeOrigin": true,
+      "target": "http://chapterup.zhuishushenqi.com/"
+    }
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.6.3",
+    "react-app-rewired": "^1.4.1",
+    "redux-devtools": "^3.4.1"
+  }
+}
