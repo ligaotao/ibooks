@@ -35,3 +35,9 @@ export const getChapterText = function (url) {
 export const getAtoc = function (params) {
     return axios.get('/atoc', {params})
 }
+
+// 获取排行榜分类
+
+export const getRanking = function () {
+    return axios.get('/ranking/gender')
+}

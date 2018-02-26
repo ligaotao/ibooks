@@ -35,7 +35,7 @@ class Book extends Component {
     // 获取源id
     let source = await getAtoc(params)
 
-    let sourceId = source.data[0]._id
+    let sourceId = source.data[this.state.index]._id
 
     let result = await getBookText({
       bookId: sourceId,
@@ -119,10 +119,27 @@ class Book extends Component {
   }
 
   goChapters (chapter, i) {
-    this.setState({
-      index: i + 1
+    let self = this
+    self.setState({
+      index: i
+    }, async () => {
+      await self.loadMore()
+      window.setTimeout(() => {
+        // 调整滚动条位置
+        var len = self.state.content.length - 1
+        var dom = document.querySelectorAll(`.${styles.txt} pre`)[len]
+        var height = dom.offsetTop
+
+        // 滚动到最新的一章
+        var box = document.querySelector(`.${styles.txt}`)
+        var top = box.scrollTop;
+        box.scroll(0, top + height);
+
+        self.setState({
+          chapterStatus: false
+        })
+      }, 100)
     })
-    console.log(chapter, i)
   }
 
   render() {
@@ -146,7 +163,7 @@ class Book extends Component {
                 {
                   self.state.content.map(k => {
                     return (
-                      <pre key={k.id}> {k.cpContent} </pre>
+                      <pre key={k.id}>{k.cpContent}</pre>
                     )
                   })
                 }

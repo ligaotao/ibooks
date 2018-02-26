@@ -5,6 +5,7 @@ import { Switch, Route, Redirect, BrowserRouter, HashRouter } from 'react-router
 import home from "../pages/home/home";
 import classify from "../pages/classify";
 import book from "../pages/book";
+import rank from "../pages/rank";
 
 // const record = asyncComponent(() => import("@/pages/record/record"));
 
@@ -16,6 +17,7 @@ export default class RouteConfig extends Component{
         <Switch>
           <Route path="/home" component={home} />
           <Route path="/classify" component={classify} />
+          <Route path="/rank" component={rank} />
           <Route path="/text/:bookId" component={book} />
           <Redirect to="/home/books" />
         </Switch>

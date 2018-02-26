@@ -25,8 +25,8 @@ class Books extends Component {
     }, 100);
   }
 
-  goClassify () {
-    this.props.history.push('/classify/list')
+  goClassify (url) {
+    this.props.history.push(url)
   }
 
   render() {
@@ -61,21 +61,17 @@ class Books extends Component {
           </Carousel>
 
               <Flex justify="center">
-                <div className={styles.icobox} onClick={this.goClassify.bind(this)}>
-                  <img src={require('src/assets/img/ico1.png')} />
-                  分类
+                <div className={styles.icobox} onClick={this.goClassify.bind(this, '/classify/list')}>
+                  <img src='/img/ico-1.png' />
+                </div>
+                <div className={styles.icobox} onClick={this.goClassify.bind(this, '/rank/list')}>
+                  <img src='/img/ico-2.png' />
                 </div>
                 <div className={styles.icobox}>
-                  <img src={require('src/assets/img/ico1.png')} />
-                  分类
+                  <img src='/img/ico-3.png' />
                 </div>
                 <div className={styles.icobox}>
-                  <img src={require('src/assets/img/ico1.png')} />
-                  分类
-                </div>
-                <div className={styles.icobox}>
-                  <img src={require('src/assets/img/ico1.png')} />
-                  分类
+                  <img src='/img/ico-4.png' />
                 </div>
               </Flex>
                 <h3 className={styles.title}><i></i>推荐小说</h3>

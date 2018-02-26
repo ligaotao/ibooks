@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { NavBar, Icon } from 'antd-mobile';
 
 import { Switch, Route } from 'react-router-dom';
-import List from './compoments/list'
+import List from './list'
 
 class App extends Component {
 
@@ -13,7 +13,7 @@ class App extends Component {
                 mode="light"
                 icon={<Icon type="left" />}
                 onLeftClick={() => window.history.back()}
-            >分类</NavBar>
+            >排行榜</NavBar>
             
             <Switch>
             <Route path={`${this.props.match.path}/list`} component={List} />

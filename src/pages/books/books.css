@@ -2,7 +2,7 @@
     margin-top: 0;
 }
 .icobox {
-    font-size: 12px;
+    font-size: 14px;
     margin: 10px 0;
     width: 100px;
     text-align: center;
@@ -11,7 +11,7 @@
 }
 .icobox img {
     display: block;
-    margin: 0 auto 5px;
+    margin: 0.2rem auto 0.2rem;
     width: 1rem;
 }
 .title {

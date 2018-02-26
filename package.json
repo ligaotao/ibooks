@@ -32,6 +32,9 @@
     "/atoc/*": {
       "target": "http://api.zhuishushenqi.com/"
     },
+    "/ranking/*": {
+      "target": "http://api.zhuishushenqi.com/"
+    },
     "/chapter/*": {
       "changeOrigin": true,
       "target": "http://chapterup.zhuishushenqi.com/"
