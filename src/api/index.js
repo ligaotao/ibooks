@@ -41,3 +41,8 @@ export const getAtoc = function (params) {
 export const getRanking = function () {
     return axios.get('/ranking/gender')
 }
+
+// 获取排行Top
+export const getRankingList= function (id) {
+    return axios.get(`/ranking/${id}`)
+}

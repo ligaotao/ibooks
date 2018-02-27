@@ -3,6 +3,7 @@ import { NavBar, Icon } from 'antd-mobile';
 
 import { Switch, Route } from 'react-router-dom';
 import List from './list'
+import Detail from './detail'
 
 class App extends Component {
 
@@ -17,10 +18,11 @@ class App extends Component {
             
             <Switch>
             <Route path={`${this.props.match.path}/list`} component={List} />
+            <Route path={`${this.props.match.path}/detail`} component={Detail} />
             </Switch>
         </div>
     );
   }
-}
+}  
 
 export default App;

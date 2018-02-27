@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { NavLink  } from 'react-router-dom';
 import { NavBar, Icon } from 'antd-mobile';
-import PropTypes from 'prop-types';
 import styles from './home.css'
 import logo from 'src/assets/img/logo.png'
 
@@ -11,9 +10,6 @@ import { Switch, Route } from 'react-router-dom';
 
 
 class Home extends Component {
-  static propTypes = {
-    // formData: PropTypes.object.isRequired
-  }
 
   state = {
     alertStatus: false, //弹框状态

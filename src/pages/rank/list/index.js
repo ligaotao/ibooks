@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './style.css'
 import { gradientColor } from 'src/utils'
 
+import { Link } from 'react-router-dom';
 import { getRanking } from 'src/api'
 
 class App extends Component {
@@ -11,19 +12,26 @@ class App extends Component {
   }
 
   async getRankList () {
+
+    let result = await getRanking()
+    let arr = result.data.epub.concat(result.data.picture)
+    let len = arr.length
+
     var colors = new gradientColor({
       start: '#fb0d60',
       end: '#0da4fb',
-      step: 10
+      step: len
     })
     
     var list = colors.getColor()
 
-    this.setState({
-      list
+    arr.forEach((k, i) => {
+      k.color = list[i]
     })
 
-    let result = await getRanking()
+    this.setState({
+      list: arr
+    })
 
   }
 
@@ -39,7 +47,8 @@ class App extends Component {
             this.state.list.map((k, i) => {
               return (
                 <li key={i}>
-                  <i style={{backgroundColor: k}} className={styles.border}></i>
+                  <i style={{backgroundColor: k.color}} className={styles.border}></i>
+                  <Link to={{pathname: '/rank/detail', search: `?id=${k._id}`}}>{ k.title } </Link>
                 </li>
               )
             })

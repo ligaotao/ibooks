@@ -2,16 +2,23 @@
     padding: 0 0.2rem;
 }
 .rank-box li{
+    font-size: 16px;
+    color: #333;
     padding: 0 0.2rem;
     margin:  0.2rem 0;
     background: #fff;
     height: 1.2rem;
     line-height: 1rem;
 }
+.rank-box a {
+    color: #333;
+}
 .border {
     width: 0.1rem;
-    height: 0.8rem;
-    margin: 0.2rem auto;
+    height: 0.4rem;
+    margin: 0.4rem 0.2rem 0.4rem 0;
     border-radius: 0.05rem;
     display: inline-block;
+    vertical-align: middle;
+    opacity: 0.8;
 }

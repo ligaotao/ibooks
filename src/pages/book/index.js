@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 
-import { Switch } from 'react-router-dom';
 import { getBookText, getChapterText, getAtoc } from 'src/api'
 import styles from './index.css'
 
