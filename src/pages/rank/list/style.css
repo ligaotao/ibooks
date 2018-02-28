@@ -22,3 +22,9 @@
     vertical-align: middle;
     opacity: 0.8;
 }
+.rank-sex {
+    position: fixed;
+    right: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%)
+}

@@ -91,3 +91,19 @@ export class gradientColor {
         }
     }
 }
+
+export const urlQuery = function (url) {
+    var query = {}
+    var arr = url.slice(1, url.length).split('&')
+
+    arr.forEach(element => {
+        try {
+            var key = element.split('=');
+            query[key[0]] = key[1]
+        } catch (e) {
+            console.log(e)
+        }
+    });
+
+    return query
+}

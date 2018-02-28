@@ -13,7 +13,7 @@ import rank from "../pages/rank";
 export default class RouteConfig extends Component{
   render(){
     return(
-      <HashRouter>
+      <BrowserRouter>
         <Switch>
           <Route path="/home" component={home} />
           <Route path="/classify" component={classify} />
@@ -21,7 +21,7 @@ export default class RouteConfig extends Component{
           <Route path="/text/:bookId" component={book} />
           <Redirect to="/home/books" />
         </Switch>
-      </HashRouter>
+      </BrowserRouter>
     )
   }
 }
