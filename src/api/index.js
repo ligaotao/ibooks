@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-const instance = axios.create({
-    baseURL: 'http://api.zhuishushenqi.com/'
-})
+// const instance = axios.create({
+//     baseURL: 'http://api.zhuishushenqi.com/'
+// })
 
 export const getClassify = function () {
     return axios.get('/cats/lv2/statistics')

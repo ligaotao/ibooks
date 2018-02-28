@@ -23,13 +23,12 @@ class Home extends Component {
   
 
   render() {
-    let self = this
 
     return (
       <div>
         <NavBar
           mode="light"
-          icon={<div><img className={styles.logo} src={logo} /></div>}
+          icon={<div><img className={styles.logo} src={logo} alt='' /></div>}
           onLeftClick={() => console.log('onLeftClick')}
           rightContent={[
             <Icon key="0" type="search" style={{ marginRight: '16px' }} />

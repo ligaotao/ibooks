@@ -29,7 +29,7 @@ class App extends Component {
         const { className } = this.props
         return (
             <div className={`${styles['change-box']} ${className}`} onClick={this.change.bind(this)}>
-                <img src={`/img/${this.state.sex}.png`} />
+                <img src={`/img/${this.state.sex}.png`} alt='' />
             </div>
         );
     }

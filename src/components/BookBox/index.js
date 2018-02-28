@@ -26,7 +26,7 @@ class App extends Component {
                     src = src.slice(7, src.length)
                     return (
                     <div key={k._id} className={styles.box} onClick={self.goBook.bind(self, k._id)}>
-                        <img src={src} />
+                        <img src={src} alt='' />
                         <div className={styles.content}>
                         <h3 className={styles.title}>{k.title}</h3>
                         <h3 className={styles.author}>{k.author}</h3>

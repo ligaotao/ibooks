@@ -19,7 +19,6 @@ class App extends Component {
   async getRankList () {
 
     let result = await getRanking()
-    let arr = result.data.epub.concat(result.data.picture)
 
     let male = result.data.male
     let female = result.data.female

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import styles from './books.css'
 
-import { Carousel, WingBlank, Flex } from 'antd-mobile';
+import { Carousel, Flex } from 'antd-mobile';
 
 class Books extends Component {
   static propTypes = {
@@ -48,7 +46,7 @@ class Books extends Component {
               >
                 <img
                   src={`https://zos.alipayobjects.com/rmsportal/${val}.png`}
-                  alt=""
+                  alt={val}
                   style={{ width: '100%', verticalAlign: 'top' }}
                   onLoad={() => {
                     // fire window resize event to change height
@@ -62,22 +60,22 @@ class Books extends Component {
 
               <Flex justify="center">
                 <div className={styles.icobox} onClick={this.goClassify.bind(this, '/classify/list')}>
-                  <img src='/img/ico-1.png' />
+                  <img src='/img/ico-1.png' alt='' />
                 </div>
                 <div className={styles.icobox} onClick={this.goClassify.bind(this, '/rank/list')}>
-                  <img src='/img/ico-2.png' />
+                  <img src='/img/ico-2.png' alt='' />
                 </div>
                 <div className={styles.icobox}>
-                  <img src='/img/ico-3.png' />
+                  <img src='/img/ico-3.png' alt='' />
                 </div>
                 <div className={styles.icobox}>
-                  <img src='/img/ico-4.png' />
+                  <img src='/img/ico-4.png' alt='' />
                 </div>
               </Flex>
                 <h3 className={styles.title}><i></i>推荐小说</h3>
                 <ul className={styles['book-list']}>
                   <li>
-                    <img src={require('src/assets/img/ico1.png')}/>
+                    <img src={require('src/assets/img/ico1.png')} alt='' />
                     <div className={styles['book-name']}>书名</div>
                     <div className={styles['book-author']}>作者名</div>
                   </li>
