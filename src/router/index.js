@@ -6,6 +6,7 @@ import home from "../pages/home/home";
 import classify from "../pages/classify";
 import book from "../pages/book";
 import rank from "../pages/rank";
+import search from "../pages/search";
 
 // const record = asyncComponent(() => import("@/pages/record/record"));
 
@@ -13,15 +14,16 @@ import rank from "../pages/rank";
 export default class RouteConfig extends Component{
   render(){
     return(
-      <BrowserRouter>
+      <HashRouter>
         <Switch>
           <Route path="/home" component={home} />
           <Route path="/classify" component={classify} />
           <Route path="/rank" component={rank} />
           <Route path="/text/:bookId" component={book} />
+          <Route path="/search" component={search} />
           <Redirect to="/home/books" />
         </Switch>
-      </BrowserRouter>
+      </HashRouter>
     )
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styles from './books.css'
 
-import { Carousel, Flex } from 'antd-mobile';
+import { Carousel, Flex, Toast } from 'antd-mobile';
 
 class Books extends Component {
   static propTypes = {
@@ -21,6 +21,10 @@ class Books extends Component {
         data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
       });
     }, 100);
+  }
+
+  tips () {
+    Toast.info('功能开发中 !!!', 2)
   }
 
   goClassify (url) {
@@ -65,10 +69,10 @@ class Books extends Component {
                 <div className={styles.icobox} onClick={this.goClassify.bind(this, '/rank/list')}>
                   <img src='/img/ico-2.png' alt='' />
                 </div>
-                <div className={styles.icobox}>
+                <div className={styles.icobox} onClick={this.tips.bind(this)}>
                   <img src='/img/ico-3.png' alt='' />
                 </div>
-                <div className={styles.icobox}>
+                <div className={styles.icobox} onClick={this.tips.bind(this)}>
                   <img src='/img/ico-4.png' alt='' />
                 </div>
               </Flex>
@@ -80,17 +84,17 @@ class Books extends Component {
                     <div className={styles['book-author']}>作者名</div>
                   </li>
                   <li>
-                    <img />
+                    <img alt='' />
                     <div>书名</div>
                     <div>作者名</div>
                   </li>
                   <li>
-                    <img />
+                    <img alt='' />
                     <div>书名</div>
                     <div>作者名</div>
                   </li>
                   <li>
-                    <img />
+                    <img alt='' />
                     <div>书名</div>
                     <div>作者名</div>
                   </li>

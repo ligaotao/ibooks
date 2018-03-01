@@ -21,18 +21,24 @@ class Home extends Component {
    */
   selectedProList = []; 
   
+  search () {
+    console.log(1)
+    this.props.history.push('/search')
+  }
 
   render() {
-
+    var self =this;
     return (
       <div>
         <NavBar
           mode="light"
           icon={<div><img className={styles.logo} src={logo} alt='' /></div>}
-          onLeftClick={() => console.log('onLeftClick')}
-          rightContent={[
-            <Icon key="0" type="search" style={{ marginRight: '16px' }} />
-          ]}
+          rightContent={
+            <div className={styles.search}>
+              <Icon type="search"  />
+              <div onClick={self.search.bind(self)} className={styles['search-click']}> </div>
+            </div> 
+          }
         >
         <ul className={styles['header-tabs']}>
           <li><NavLink  to='/home/books' activeClassName={styles.active} >书城</NavLink></li>

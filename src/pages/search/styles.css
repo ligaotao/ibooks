@@ -1,0 +1,24 @@
+.search-list {
+    position: fixed;
+    top:45px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 10rem;
+}
+
+.search-list li {
+    line-height: 1.5rem;
+    padding-left: 2rem;
+    background: #FFF; /* rgba(42, 170, 130, 0.5)   */
+    border-bottom: 1px solid #ccc;
+}
+
+.search {
+    font-size: 14px;
+    height: 30px;
+    padding-left: 10px; 
+    appearance: none;
+    border: 1px solid #ccc;
+    width: 7rem;
+}

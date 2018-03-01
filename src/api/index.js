@@ -46,3 +46,8 @@ export const getRanking = function () {
 export const getRankingList= function (id) {
     return axios.get(`/ranking/${id}`)
 }
+
+// 匹配输入关键字
+export const getKeyWords = function (params) {
+    return axios.get('/book/auto-complete', {params})
+}
