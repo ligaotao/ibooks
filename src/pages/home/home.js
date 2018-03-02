@@ -5,6 +5,7 @@ import styles from './home.css'
 import logo from 'src/assets/img/logo.png'
 
 import Books from 'src/pages/books/books'
+import History from "src/pages/history";
 
 import { Switch, Route } from 'react-router-dom';
 
@@ -42,13 +43,13 @@ class Home extends Component {
         >
         <ul className={styles['header-tabs']}>
           <li><NavLink  to='/home/books' activeClassName={styles.active} >书城</NavLink></li>
-          <li><NavLink  to='/home/my-books' activeClassName={styles.active} >书架</NavLink></li>
+          <li><NavLink  to='/home/history' activeClassName={styles.active} >书架</NavLink></li>
         </ul>
         </NavBar>
 
         <Switch>
           <Route path={`${this.props.match.path}/books`} component={Books} />
-          <Route path={`${this.props.match.path}/my-books`} component={Books} />
+          <Route path={`${this.props.match.path}/history`} component={History} />
         </Switch>
         
       </div>

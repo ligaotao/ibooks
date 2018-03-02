@@ -1,32 +1,3 @@
-.wingblank {
-    margin-top: 0;
-}
-.icobox {
-    font-size: 14px;
-    margin: 10px 0;
-    width: 100px;
-    text-align: center;
-    flex: 1;
-    color: #666;
-}
-.icobox img {
-    display: block;
-    margin: 0.2rem auto 0.2rem;
-    width: 1rem;
-}
-.title {
-    margin-left: 0.2rem;
-    line-height: 0.6rem;
-}
-.title i {
-    vertical-align: middle;
-    display: inline-block;
-    background: rgb(29, 165, 122);
-    margin-right: 0.1rem;
-    border-radius: 0.05rem;
-    width: 0.1rem;
-    height: 0.6rem;
-}
 .book-list {
     box-sizing: border-box;
     list-style: none;

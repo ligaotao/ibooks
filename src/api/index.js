@@ -51,3 +51,9 @@ export const getRankingList= function (id) {
 export const getKeyWords = function (params) {
     return axios.get('/book/auto-complete', {params})
 }
+
+// 搜素关键字
+
+export const getSearchBooks = function (params) {
+    return axios.get('/book/fuzzy-search', {params})
+}

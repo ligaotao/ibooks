@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styles from './books.css'
 
 import { Carousel, Flex, Toast } from 'antd-mobile';
+import { getRankingList } from 'src/api'
 
 class Books extends Component {
   static propTypes = {
@@ -12,6 +13,7 @@ class Books extends Component {
     data: ['1', '2', '3'],
     imgHeight: 176,
     slideIndex: 0,
+    books: []
   }
   
   componentDidMount() {
@@ -21,6 +23,7 @@ class Books extends Component {
         data: ['AiyWuByWklrrUDlFignR', 'TekJlZRVCjLFexlOCuWn', 'IJOtIlfsYdTyaDTRVrLI'],
       });
     }, 100);
+    this.orderBooks()
   }
 
   tips () {
@@ -29,6 +32,14 @@ class Books extends Component {
 
   goClassify (url) {
     this.props.history.push(url)
+  }
+
+  async orderBooks () {
+    let result = await getRankingList('54d42d92321052167dfb75e3');
+    let { books } = result.data.ranking
+    this.setState({
+      books: books.slice(0, 6)
+    })
   }
 
   render() {
@@ -78,26 +89,19 @@ class Books extends Component {
               </Flex>
                 <h3 className={styles.title}><i></i>推荐小说</h3>
                 <ul className={styles['book-list']}>
-                  <li>
-                    <img src={require('src/assets/img/ico1.png')} alt='' />
-                    <div className={styles['book-name']}>书名</div>
-                    <div className={styles['book-author']}>作者名</div>
-                  </li>
-                  <li>
-                    <img alt='' />
-                    <div>书名</div>
-                    <div>作者名</div>
-                  </li>
-                  <li>
-                    <img alt='' />
-                    <div>书名</div>
-                    <div>作者名</div>
-                  </li>
-                  <li>
-                    <img alt='' />
-                    <div>书名</div>
-                    <div>作者名</div>
-                  </li>
+                  {
+                    this.state.books.map((k, i) => {
+                      var src = unescape(k.cover)
+                      src = src.slice(7, src.length)
+                      return (
+                        <li>
+                          <img src={src} alt='' />
+                          <div className={styles['book-name']}>{k.title}</div>
+                          <div className={styles['book-author']}>{k.author}</div>
+                        </li>
+                      )
+                    })
+                  }
                 </ul>
       </div>
     );

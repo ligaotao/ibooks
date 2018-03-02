@@ -7,9 +7,13 @@
     width: 10rem;
 }
 
+.search-list li:first-child {
+    border-top: 1px solid #ccc;
+}
+
 .search-list li {
-    line-height: 1.5rem;
-    padding-left: 2rem;
+    line-height: 1.3rem;
+    padding-left: 1rem;
     background: #FFF; /* rgba(42, 170, 130, 0.5)   */
     border-bottom: 1px solid #ccc;
 }
@@ -21,4 +25,22 @@
     appearance: none;
     border: 1px solid #ccc;
     width: 7rem;
+}
+
+.btn {
+    appearance: none;
+    background: rgba(0, 0, 0, 0.1);
+    color: rgb(42, 170, 130);
+    outline: none;
+    border: none;
+    font-size: 14px;
+    height: 32px;
+    width: 1.6rem;
+}
+
+.books {
+    position: fixed;
+    height: 100vh;
+    padding-top: 45px;
+    z-index: -1;
 }

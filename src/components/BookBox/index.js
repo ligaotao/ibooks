@@ -13,6 +13,7 @@ class App extends Component {
     }
 
     goBook (id) {
+        console.log(id)
         this.props.history.push(`/text/${id}`)
     }
 
