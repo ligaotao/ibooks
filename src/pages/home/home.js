@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { NavLink  } from 'react-router-dom';
 import { NavBar, Icon } from 'antd-mobile';
 import styles from './home.css'
@@ -15,6 +16,7 @@ class Home extends Component {
   state = {
     alertStatus: false, //弹框状态
     alertTip: '1212', //弹框提示文字
+    plans: []
   }
   /**
    * 已选择的商品数据
@@ -56,5 +58,6 @@ class Home extends Component {
     );
   }
 }
+
 
 export default Home;

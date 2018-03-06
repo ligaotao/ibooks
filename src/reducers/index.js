@@ -1,19 +1,10 @@
-import { combineReducers } from 'redux'
-// import home from './home.js';//首页
-/**
- * 合并多个reducer
- * @type {[type]}
- */
+import { combineReducers } from 'redux';
 
-function test (state = [], action) {
-    return {
-        hello: 'world'
-    }
-}
-
-const reducer = combineReducers({
-    test
-});
+import booksHistory from './booksHistory';
 
 
-export default reducer;
+var reducers = combineReducers({
+    booksHistory: booksHistory
+})
+
+export default reducers;

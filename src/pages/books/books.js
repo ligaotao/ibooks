@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import styles from './books.css'
 
 import { Carousel, Flex, Toast } from 'antd-mobile';
@@ -95,7 +96,7 @@ class Books extends Component {
                       src = src.slice(7, src.length)
                       return (
                         <li>
-                          <img src={src} alt='' />
+                          <Link to={`/text/${k._id}`}> <img src={src} alt='' /> </Link>
                           <div className={styles['book-name']}>{k.title}</div>
                           <div className={styles['book-author']}>{k.author}</div>
                         </li>

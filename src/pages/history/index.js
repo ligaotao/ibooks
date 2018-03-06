@@ -1,41 +1,27 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux'
+import store from 'src/store/store'
+// import { addPlans } from 'src/actions'
 import styles from './index.css'
 
 
 class Book extends Component {
 
-  state = {
-    books: [
-      {
-        _id: "5816b415b06d1d32157790b1",
-        author: "辰东",
-        cover: "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1228859%2F_1228859_441552.jpg%2F",
-        title: "圣墟"
-      },
-      {
-        _id: "5816b415b06d1d32157790b1",
-        author: "辰东",
-        cover: "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1228859%2F_1228859_441552.jpg%2F",
-        title: "圣墟"
-      },
-      {
-        _id: "5816b415b06d1d32157790b1",
-        author: "辰东",
-        cover: "/agent/http%3A%2F%2Fimg.1391.com%2Fapi%2Fv1%2Fbookcenter%2Fcover%2F1%2F1228859%2F_1228859_441552.jpg%2F",
-        title: "圣墟"
-      }
-    ]
-  }
+  constructor(props) {
+    super(props);
+	}
 
   componentDidMount () {
-
+    // store.dispatch(addPlans({
+    //   id: 2,
+    //   value: 'aaa'
+    // }));
   }
 
 
 
   render() {
-
+    let { books } = this.props
     return (
         <div>
             <ul>
@@ -44,7 +30,7 @@ class Book extends Component {
             </ul>
             <ul className={styles['book-list']}>
                   {
-                    this.state.books.map((k, i) => {
+                    books.map((k, i) => {
                       var src = unescape(k.cover)
                       src = src.slice(7, src.length)
                       return (
@@ -62,4 +48,10 @@ class Book extends Component {
   }
 }
 
-export default Book;
+const mapStateToProps = function (store) {
+  return {
+    books: store.reducers.booksHistory
+  }
+}
+
+export default connect(mapStateToProps)(Book);

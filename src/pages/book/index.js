@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-
+import { addBookHistory } from 'src/actions'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import { getBookText, getChapterText, getAtoc } from 'src/api'
 import styles from './index.css'
 
@@ -13,7 +15,8 @@ class Book extends Component {
     index: 0,
     actionsStatus: false,
     chapterStatus: false,
-    timer: 0
+    timer: 0,
+    bookId: this.props.match.params.bookId
   }
 
   componentDidMount () {
@@ -141,9 +144,19 @@ class Book extends Component {
     })
   }
 
+  addHistory () {
+    let { bookId, index} = this.state
+    let { actions } = this.props
+    actions.addBookHistory({
+      id: bookId,
+      title: '位置',
+      chapters: index
+    })
+  }
+
   render() {
     let self = this
-
+    let { actions } = self.props
 
     return (
         <div className={styles['book-box']}>
@@ -186,10 +199,22 @@ class Book extends Component {
               <div onClick={self.showMenu.bind(self)}>
                 菜单
               </div>
+              <div onClick={self.addHistory.bind(self)}>
+                收藏
+              </div>
             </div>
         </div>
     );
   }
 }
 
-export default Book;
+const mapStateToProps = state => {
+  return {
+  }
+}
+
+const mapDispatchToProps = dispatch => ({
+  actions: bindActionCreators({addBookHistory}, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Book);

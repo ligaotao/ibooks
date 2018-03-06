@@ -1,14 +1,13 @@
-export default (_ID) => {
-    var action = {};
-    var arr = [
-        'setState' //设置状态
-    ];
+import * as types from './action-type'
 
-    for (let i = 0; i < arr.length; i++) {
-        action[arr[i]] = (target) => {
-            return { _ID: _ID, target: target, type: arr[i] };
-        }
-    }
+//添加计划
+export const addTodo = text => ({ type: types.ADD_TODO, text })
+export const deleteTodo = id => ({ type: types.DELETE_TODO, id })
+export const editTodo = (id, text) => ({ type: types.EDIT_TODO, id, text })
+export const completeTodo = id => ({ type: types.COMPLETE_TODO, id })
+export const completeAll = () => ({ type: types.COMPLETE_ALL })
+export const clearCompleted = () => ({ type: types.CLEAR_COMPLETED })
 
-    return action;
-}
+// 将书籍加入到书架
+
+export const addBookHistory = content => ({type: types.ADD_BOOK_HISTORY, content})

@@ -3,12 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import './utils/rem';
 import route from './router'
-import configureStore from 'src/store/store';
 import registerServiceWorker from './registerServiceWorker';
-
-import {Provider} from 'react-redux';
-import store from 'src/store/store';
-
 
 
 
@@ -19,9 +14,7 @@ import store from 'src/store/store';
 
 const render = Component => {
     ReactDOM.render(
-        <Provider store={store}>
-            <Component />
-        </Provider>
+        <Component />
         ,
         document.getElementById('root')
     )
