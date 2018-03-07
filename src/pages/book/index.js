@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addBookHistory } from 'src/actions'
+import { addBookHistory, deleteBookHistory, updateBookHisroty } from 'src/actions'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { getBookText, getChapterText, getAtoc } from 'src/api'
@@ -9,21 +9,55 @@ import { InfiniteScroller } from 'zent'
 
 class Book extends Component {
 
+  constructor(props) {
+    super(props)
+  }
+
   state = {
     chapters: [],
     content: [],
     index: 0,
+    inHistory: false,
     actionsStatus: false,
     chapterStatus: false,
     timer: 0,
-    bookId: this.props.match.params.bookId
+    book: {}
   }
 
   componentDidMount () {
     let self = this
-    setTimeout(() => {
-      self.getContent()
-    }, 100);
+    let state = this.props.location.state
+    let obj = {}
+    if (state) {
+      window.sessionStorage.bookState = JSON.stringify(state)
+    } else {
+      state = JSON.parse(window.sessionStorage.bookState) || {}
+    }
+
+    // 看当前书 是否在书架中
+
+    let { booksHistory } = this.props
+    let id = this.props.match.params.bookId
+
+    booksHistory.some((book) => {
+      if (book._id === id) {
+        obj = {
+          index: book.chapters - 1,
+          inHistory: true
+        }
+      }
+      return book._id === id
+    })
+
+    this.setState({
+      book:state,
+      ...obj
+    }, () => {
+      setTimeout(() => {
+        self.getContent()
+      }, 100);
+    })
+
   }
 
   async getContent () {
@@ -37,12 +71,15 @@ class Book extends Component {
     // 获取源id
     let source = await getAtoc(params)
 
-    let sourceId = source.data[this.state.index]._id
+    
+    let sourceId = source.data[0]._id
 
     let result = await getBookText({
       bookId: sourceId,
       view: 'chapters'
     })
+
+    console.log(index)
 
     let url = result.data.chapters[index].link
 
@@ -58,7 +95,8 @@ class Book extends Component {
   }
 
   async loadMore(closeLoading) {
-    const { index, content, chapters } = this.state;
+    const { index, content, chapters, book } = this.state;
+    const { actions } = this.props
     const latestList = content;
 
     let url = chapters[index].link
@@ -72,6 +110,11 @@ class Book extends Component {
         index: index + 1,
         content: [...latestList, newList]
       });
+      // 将历史更新到store中
+      actions.updateBookHisroty({
+        ...book,
+        chapters: index + 1
+      })
       closeLoading && closeLoading();
 
     }, 100);
@@ -123,9 +166,31 @@ class Book extends Component {
   goChapters (chapter, i) {
     let self = this
     self.setState({
-      index: i
+      index: i + 1
     }, async () => {
-      await self.loadMore()
+
+      const { index, content, chapters, book } = this.state;
+      const { actions } = this.props
+      const latestList = content;
+
+      let url = chapters[index].link
+
+      let text = await getChapterText(url)
+
+      const newList = text.data.chapter;
+
+      setTimeout(() => {
+        this.setState({
+          content: [...latestList, newList]
+        });
+        // 将历史更新到store中
+        actions.updateBookHisroty({
+          ...book,
+          chapters: index
+        })
+
+      }, 100);
+
       window.setTimeout(() => {
         // 调整滚动条位置
         var len = self.state.content.length - 1
@@ -144,13 +209,19 @@ class Book extends Component {
     })
   }
 
-  addHistory () {
-    let { bookId, index} = this.state
+  changeHistory () {
+    let { index, book, inHistory } = this.state
     let { actions } = this.props
-    actions.addBookHistory({
-      id: bookId,
-      title: '位置',
-      chapters: index
+    if (inHistory) {
+      actions.deleteBookHistory(book._id)
+    } else {
+      actions.addBookHistory({
+        ...book,
+        chapters: index
+      })
+    }
+    this.setState({
+      inHistory: !inHistory
     })
   }
 
@@ -173,9 +244,9 @@ class Book extends Component {
                 loadMore={self.loadMore.bind(self)}
               >
                 {
-                  self.state.content.map(k => {
+                  self.state.content.map((k, i) => {
                     return (
-                      <pre key={k.id}>{k.cpContent}</pre>
+                      <pre key={i}>{k.cpContent}</pre>
                     )
                   })
                 }
@@ -186,8 +257,9 @@ class Book extends Component {
               <ul>
                 {
                   self.state.chapters.map((k, i) => {
+                    let className = i === this.state.index - 1 ? styles.high : ''
                     return (
-                      <li key={k.id} onClick={self.goChapters.bind(self, k, i)}>
+                      <li key={i} onClick={self.goChapters.bind(self, k, i)} className={className}>
                         {k.title}
                       </li>
                     )
@@ -199,8 +271,8 @@ class Book extends Component {
               <div onClick={self.showMenu.bind(self)}>
                 菜单
               </div>
-              <div onClick={self.addHistory.bind(self)}>
-                收藏
+              <div onClick={self.changeHistory.bind(self)}>
+                {self.state.inHistory ? '取消': ''}收藏
               </div>
             </div>
         </div>
@@ -210,11 +282,12 @@ class Book extends Component {
 
 const mapStateToProps = state => {
   return {
+    booksHistory: state.reducers.booksHistory
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators({addBookHistory}, dispatch)
+  actions: bindActionCreators({addBookHistory, deleteBookHistory, updateBookHisroty}, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Book);

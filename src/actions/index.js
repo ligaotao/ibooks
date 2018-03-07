@@ -11,3 +11,5 @@ export const clearCompleted = () => ({ type: types.CLEAR_COMPLETED })
 // 将书籍加入到书架
 
 export const addBookHistory = content => ({type: types.ADD_BOOK_HISTORY, content})
+export const deleteBookHistory = id => ({type: types.DELETE_BOOK_HISTORY, id})
+export const updateBookHisroty = content => ({type: types.UPDATE_BOOK_HISTORY, content})

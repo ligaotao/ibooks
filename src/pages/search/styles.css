@@ -43,4 +43,5 @@
     height: 100vh;
     padding-top: 45px;
     z-index: -1;
+    overflow: auto;
 }

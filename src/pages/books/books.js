@@ -96,7 +96,7 @@ class Books extends Component {
                       src = src.slice(7, src.length)
                       return (
                         <li>
-                          <Link to={`/text/${k._id}`}> <img src={src} alt='' /> </Link>
+                          <Link to={{pathname: `/text/${k._id}`, state: {img: src, title: k.title, author: k.author, _id: k._id}}}> <img src={src} alt='' /> </Link>
                           <div className={styles['book-name']}>{k.title}</div>
                           <div className={styles['book-author']}>{k.author}</div>
                         </li>

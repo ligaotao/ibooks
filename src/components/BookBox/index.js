@@ -12,9 +12,16 @@ class App extends Component {
         books:　[]
     }
 
-    goBook (id) {
-        console.log(id)
-        this.props.history.push(`/text/${id}`)
+    goBook (book) {
+        var src = unescape(book.cover)
+        src = src.slice(7, src.length)
+
+        this.props.history.push({pathname: `/text/${book._id}`, state: {
+            _id: book._id,
+            img: src,
+            title: book.title,
+            author: book.author
+        }})
     }
 
     render() {
@@ -26,7 +33,7 @@ class App extends Component {
                     var src = unescape(k.cover)
                     src = src.slice(7, src.length)
                     return (
-                    <div key={k._id} className={styles.box} onClick={self.goBook.bind(self, k._id)}>
+                    <div key={k._id} className={styles.box} onClick={self.goBook.bind(self, k)}>
                         <img src={src} alt='' />
                         <div className={styles.content}>
                         <h3 className={styles.title}>{k.title}</h3>

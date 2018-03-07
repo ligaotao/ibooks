@@ -11,9 +11,12 @@ import search from "../pages/search";
 import {Provider} from 'react-redux';
 import store from 'src/store/store';
 
-// store.subscribe((e) => {
-//   // console.log(e)
-// })
+store.subscribe((e) => {
+  // 变更的时候存储到 localStory
+  let obj = store.getState()
+  window.localStorage.store = JSON.stringify(obj)
+  // console.log(e)
+})
 
 // const record = asyncComponent(() => import("@/pages/record/record"));
 

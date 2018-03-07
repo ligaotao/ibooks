@@ -2,7 +2,7 @@
     box-sizing: border-box;
     list-style: none;
     margin: 0;
-    padding: 0 0.2rem;
+    padding: 0.2rem;
 }
 .book-list li {
     float: left;
