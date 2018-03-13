@@ -33,10 +33,10 @@ class App extends Component {
   }
 
   async getBooks () {
-    let { keyWords } = this.state
+    let { value } = this.state
     let self = this
     try {
-      let result = await getSearchBooks({query: keyWords})
+      let result = await getSearchBooks({query: value})
       self.setState({
         books: result.data.books,
         keyWords: []

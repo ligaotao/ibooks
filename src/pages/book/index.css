@@ -7,7 +7,7 @@
     height: 100vh;
 }
 .txt {
-    height: 100vh;
+    height: 100%;
     overflow: auto;
     padding: 10px;
     line-height: 1.4;
@@ -77,4 +77,24 @@
 }
 .high {
     color: green;
+}
+
+.text-header:global(.am-navbar-light) {
+    background-color: rgba(204, 212, 214, 1) 
+}
+
+.text-header :global(.am-navbar-title) {
+    font-size: 16px;
+}
+
+.circle {
+    width: 4px;
+    height: 4px;
+    display: inline-block;
+    background-color: #333;
+    vertical-align: middle;
+    border-radius: 50%;
+}
+.circle.active {
+    background-color: #1DA57A; 
 }

@@ -29,6 +29,9 @@
     "/cats/*": {
       "target": "http://api.zhuishushenqi.com/"
     },
+    "/btoc/*": {
+      "target": "http://api.zhuishushenqi.com/"
+    },
     "/atoc/*": {
       "target": "http://api.zhuishushenqi.com/"
     },
