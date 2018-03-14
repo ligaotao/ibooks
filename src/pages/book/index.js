@@ -116,8 +116,7 @@ class Book extends Component {
     index = index - num > 0 ? index - num : 0
 
     var height = 48 * index;
-    console.log(height)
-    document.querySelector(`.${styles.chapters} ul`).scroll(0, height)
+     document.querySelector(`.${styles.chapters} ul`).scroll(0, height)
   }
 
   async loadMore(closeLoading) {
