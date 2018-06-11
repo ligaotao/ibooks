@@ -50,7 +50,7 @@ class Book extends Component {
     let { booksHistory } = this.props
     let id = this.props.match.params.bookId
     let bookReducer = {
-      sourceIndex: 2
+      sourceIndex: 0
     }
     booksHistory.some((book) => {
       if (book._id === id) {
@@ -87,8 +87,10 @@ class Book extends Component {
     let source = await getAtoc(params)
 
     let sourceIndex = this.state.book.sourceIndex
-    
-    let sourceId = source.data[sourceIndex]._id
+    let filters = ['优质书源', '176小说', '小小书屋', '混混小说网']
+    let sourceArr = source.data.filter(k => !filters.includes(k.name))
+    console.log(sourceArr)
+    let sourceId = sourceArr[sourceIndex]._id
 
     let result = await getBookText({
       bookId: sourceId,
@@ -106,7 +108,7 @@ class Book extends Component {
       chapters: result.data.chapters,
       content,
       index: index + 1,
-      source: source.data
+      source: sourceArr
     })
     this.setChapterScroll(this.state.index)
   }
@@ -169,7 +171,7 @@ class Book extends Component {
         this.setState({
           actionsStatus: true
         })
-  
+
         clearTimeout(this.state.timer)
         setTimeout(() => {
           this.setState({
