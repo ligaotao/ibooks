@@ -87,7 +87,7 @@ class Book extends Component {
     let source = await getAtoc(params)
 
     let sourceIndex = this.state.book.sourceIndex
-    let filters = ['优质书源', '176小说', '小小书屋', '混混小说网']
+    let filters = ['优质书源', '176小说', '小小书屋', '混混小说网', '笔趣阁']
     let sourceArr = source.data.filter(k => !filters.includes(k.name))
     console.log(sourceArr)
     let sourceId = sourceArr[sourceIndex]._id
