@@ -88,29 +88,34 @@ class Book extends Component {
 
     let sourceIndex = this.state.book.sourceIndex
     let filters = ['优质书源', '176小说', '小小书屋', '混混小说网', '笔趣阁']
-    let sourceArr = source.data.filter(k => !filters.includes(k.name))
+    let sourceArr = source.data
+    // .filter(k => !filters.includes(k.name))
     console.log(sourceArr)
     let sourceId = sourceArr[sourceIndex]._id
+    try {
+      let result = await getBookText({
+        bookId: sourceId,
+        view: 'chapters'
+      })
+  
+  
+      let url = result.data.chapters[index].link
+  
+      let text = await getChapterText(url)
+  
+      let content = this.state.content
+      content.push({cpContent: text.data.chapter.cpContent})
+      await this.setStateAsync({
+        chapters: result.data.chapters,
+        content,
+        index: index + 1,
+        source: sourceArr
+      })
+      this.setChapterScroll(this.state.index)
+    } catch (e) {
+      console.log(e)
+    }
 
-    let result = await getBookText({
-      bookId: sourceId,
-      view: 'chapters'
-    })
-
-
-    let url = result.data.chapters[index].link
-
-    let text = await getChapterText(url)
-
-    let content = this.state.content
-    content.push({cpContent: text.data.chapter.body})
-    await this.setStateAsync({
-      chapters: result.data.chapters,
-      content,
-      index: index + 1,
-      source: sourceArr
-    })
-    this.setChapterScroll(this.state.index)
   }
 
   setChapterScroll (index) {
@@ -135,7 +140,7 @@ class Book extends Component {
 
     let text = await getChapterText(url)
 
-    const newList = text.data.chapter.body;
+    const newList = text.data.chapter.cpContent;
 
     await this.setStateAsync({
       index: index + 1,
@@ -210,7 +215,7 @@ class Book extends Component {
 
     let text = await getChapterText(url)
 
-    const newList = text.data.chapter.body;
+    const newList = text.data.chapter.cpContent;
 
 
     this.setState({
