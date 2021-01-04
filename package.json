@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "antd-mobile": "^2.1.6",
-    "axios": "^0.17.1",
+    "axios": "^0.21.1",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",
     "react": "^16.2.0",
